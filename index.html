@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Rose</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#efe6d6;--paper:#fffdf6;--line:#cfe0ef;--margin:#e8a0a0;--ink:#24304f;--accent:#b5455a;--shadow:rgba(60,40,20,.25);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1a1f;--paper:#2a2830;--line:#3a4256;--margin:#7a4850;--ink:#e9e4f2;--accent:#f08aa0;--shadow:rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#1c1a1f;--paper:#2a2830;--line:#3a4256;--margin:#7a4850;--ink:#e9e4f2;--accent:#f08aa0;--shadow:rgba(0,0,0,.5)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Caveat','Bradley Hand','Segoe Script',cursive}
+body{min-height:100vh;display:flex;justify-content:center;padding:24px 16px 48px}
+#cover{text-align:center;margin-top:18vh}
+#cover h1{font-size:3rem;margin:0 0 6px;color:var(--accent);font-weight:600}
+#cover p{font-size:1.5rem;margin:0 0 28px}
+#env{width:260px;height:170px;margin:0 auto;background:var(--accent);border-radius:8px;position:relative;cursor:pointer;box-shadow:0 8px 20px var(--shadow);border:0;display:block;transition:transform .2s}
+#env:active{transform:scale(.97)}
+#env::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom right,transparent 49%,rgba(0,0,0,.15) 50%) left/50% 100% no-repeat,linear-gradient(to bottom left,transparent 49%,rgba(0,0,0,.15) 50%) right/50% 100% no-repeat;border-radius:8px}
+#env span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:2.6rem;color:#fff;z-index:1}
+#hint{margin-top:18px;font-size:1.3rem;opacity:.75}
+#letter{display:none;width:100%;max-width:560px;animation:rise .9s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.paper{background:var(--paper);border-radius:4px;padding:34px 22px 30px 56px;position:relative;box-shadow:0 10px 28px var(--shadow);
+background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,var(--line) 35px,var(--line) 36px);background-position:0 30px}
+.paper::before{content:"";position:absolute;left:40px;top:0;bottom:0;width:2px;background:var(--margin)}
+.paper::after{content:"";position:absolute;left:12px;top:0;bottom:0;width:14px;background:radial-gradient(circle,var(--bg) 6px,transparent 7px) 0 20px/14px 56px repeat-y}
+.paper p{font-size:1.65rem;line-height:36px;margin:0 0 36px}
+.date{font-size:1.3rem;opacity:.7;margin-bottom:36px!important}
+.to{color:var(--accent);font-weight:600;font-size:2rem!important}
+.sign{margin-top:12px!important;color:var(--accent);font-size:2.1rem!important;font-weight:600}
+.p{opacity:0;transform:translateY(8px);transition:opacity .8s,transform .8s}
+.p.show{opacity:1;transform:none}
+#foot{text-align:center;margin-top:22px;font-size:1.3rem;opacity:.75}
+</style>
+</head>
+<body>
+<div id="cover">
+  <h1>For Rose</h1>
+  <p>Open it whenever you want.</p>
+  <button id="env" aria-label="Open the letter"><span>♥</span></button>
+  <div id="hint">tap the envelope</div>
+</div>
+
+<div id="letter">
+  <div class="paper">
+    <p class="date p">October 2026</p>
+    <p class="to p">Rose,</p>
+    <p class="p">If you’re reading this, you opened it on your own, and that already means a lot to me.</p>
+    <p class="p">I wanted you to have something that doesn’t depend on a phone call, a good day, or the right timing. Something you can come back to whenever you want, like a letter tucked in a notebook.</p>
+    <p class="p">I love you. I loved you with my whole heart, and no amount of time changes that.</p>
+    <p class="p">You made ordinary days feel like they were worth remembering. You made me want to be better, softer, and more patient. Whatever happened, whatever is still unsaid, that part was real.</p>
+    <p class="p">I’m not writing this to pull you back or to ask you for anything. I’m writing it so you always know the truth: you were loved, truly loved, by me.</p>
+    <p class="p">Wherever life takes you, I hope it’s gentle. I hope you laugh a lot, I hope you rest when you’re tired, and I hope you never doubt how much you’re worth.</p>
+    <p class="p sign">Always yours,<br>Martin</p>
+  </div>
+  <div id="foot">♥ come back anytime ♥</div>
+</div>
+
+<script>
+document.getElementById('env').addEventListener('click',function(){
+  document.getElementById('cover').style.display='none';
+  var l=document.getElementById('letter');l.style.display='block';
+  window.scrollTo(0,0);
+  document.querySelectorAll('.p').forEach(function(el,i){setTimeout(function(){el.classList.add('show')},500+i*900)});
+});
+</script>
+</body>
+</html>
